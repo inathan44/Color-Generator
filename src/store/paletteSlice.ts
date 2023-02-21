@@ -5,20 +5,40 @@ import { RootState } from "./store";
 // When the reducer has a payload/action make sure to add
 // PayloadAction<TYPEHERE> as the type of the action
 
-interface Pallete {
-  main: string;
-  secondary: string;
-  third: string;
-  fourth: string;
-  fifth: string;
+export type ColorData = {
+  hexColor: string;
+  locked: boolean;
+};
+
+export interface Pallete {
+  main: ColorData;
+  secondary: ColorData;
+  third: ColorData;
+  fourth: ColorData;
+  fifth: ColorData;
 }
 
 const palette: Pallete = {
-  main: "#fff",
-  secondary: "#fff",
-  third: "#fff",
-  fourth: "#fff",
-  fifth: "#fff",
+  main: {
+    hexColor: "#fff",
+    locked: false,
+  },
+  secondary: {
+    hexColor: "#fff",
+    locked: false,
+  },
+  third: {
+    hexColor: "#fff",
+    locked: false,
+  },
+  fourth: {
+    hexColor: "#fff",
+    locked: false,
+  },
+  fifth: {
+    hexColor: "#fff",
+    locked: false,
+  },
 };
 
 type InitState = {
@@ -34,11 +54,13 @@ const paletteSlice = createSlice({
   initialState,
   reducers: {
     generatePallete(state): void {
-      state.palette.main = "#" + Math.random().toString(16).slice(2, 8);
-      state.palette.secondary = "#" + Math.random().toString(16).slice(2, 8);
-      state.palette.third = "#" + Math.random().toString(16).slice(2, 8);
-      state.palette.fourth = "#" + Math.random().toString(16).slice(2, 8);
-      state.palette.fifth = "#" + Math.random().toString(16).slice(2, 8);
+      for (const key in state.palette) {
+        state.palette[key as keyof Pallete].hexColor = state.palette[
+          key as keyof Pallete
+        ].locked
+          ? state.palette[key as keyof Pallete].hexColor
+          : "#" + Math.random().toString(16).slice(2, 8);
+      }
     },
   },
 });
