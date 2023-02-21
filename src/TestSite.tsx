@@ -2,7 +2,7 @@ import "../public/test.css";
 
 const TestSite = () => {
   return (
-    <body>
+    <div>
       <main>
         <div className="test">
           <section className="section-hero">
@@ -25,7 +25,7 @@ const TestSite = () => {
               </div>
               <div className="hero-img-box">
                 <img
-                  src="content/img/hero.png"
+                  src="#"
                   className="hero-img"
                   alt="Woman enjoying food, meals in storage container, and food bowls on a table"
                 />
@@ -34,7 +34,7 @@ const TestSite = () => {
           </section>
         </div>
       </main>
-    </body>
+    </div>
   );
 };
 

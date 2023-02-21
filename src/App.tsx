@@ -1,6 +1,9 @@
 import { useState } from "react";
 import TestSite from "./TestSite";
 import SingleColor from "./SingleColor";
+import { useAppDispatch, useAppSelector } from "./hooks";
+import { selectPalette } from "./store/paletteSlice";
+import { generatePallete } from "./store/paletteSlice";
 
 interface Pallete {
   main: string;
@@ -11,6 +14,10 @@ interface Pallete {
 }
 
 function App() {
+  const dispatch = useAppDispatch();
+  const testing = useAppSelector(selectPalette);
+  console.log("testing", testing);
+
   const [colors, setColors] = useState<Pallete>({
     main: "#fff",
     secondary: "#fff",
@@ -21,6 +28,7 @@ function App() {
 
   function getColor(): void {
     // "#" + Math.random().toString(16).slice(2, 8)
+    dispatch(generatePallete());
     setColors({
       main: "#" + Math.random().toString(16).slice(2, 8),
       secondary: "#" + Math.random().toString(16).slice(2, 8),
@@ -43,9 +51,12 @@ function App() {
       <div className="container">
         <h1>Testing</h1>
         <div className="colors">
-          {Object.keys(colors).map((color) => {
+          {Object.keys(testing).map((color) => {
             return (
-              <SingleColor key={color} color={colors[color as keyof Pallete]} />
+              <SingleColor
+                key={color}
+                color={testing[color as keyof Pallete]}
+              />
             );
           })}
         </div>
