@@ -15,10 +15,9 @@ function App() {
   }
 
   return (
-    <div className="bg-gray-700 h-screen font-Inter font-medium">
-      <div className="container">
-        <h1 className="bg-red-300">Testing</h1>
-        <div className="grid grid-cols-5">
+    <div className="bg-gray-700 h-screen font-Inter font-medium ">
+      <div className="">
+        <div className="grid grid-cols-5 max-w-7xl mx-auto pt-2">
           {/* <div className="flex h-64 flex-1 rounded overflow-hidden border-solid border-red-500 border-2"> */}
           {Object.keys(testing).map((color) => {
             return (
@@ -29,7 +28,14 @@ function App() {
             );
           })}
         </div>
-        <button onClick={getColor}>Generate Random Color</button>
+        <div className="flex justify-center">
+          <button
+            className="border-2 border-white px-6 py-3 mt-2 text-white rounded-md"
+            onClick={getColor}
+          >
+            Generate Random Color
+          </button>
+        </div>
         <TestSite />
       </div>
     </div>
