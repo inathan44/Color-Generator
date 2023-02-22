@@ -15,10 +15,11 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div className="bg-gray-700 h-screen font-Inter font-medium">
       <div className="container">
         <h1 className="bg-red-300">Testing</h1>
-        <div className="colors">
+        <div className="grid grid-cols-5">
+          {/* <div className="flex h-64 flex-1 rounded overflow-hidden border-solid border-red-500 border-2"> */}
           {Object.keys(testing).map((color) => {
             return (
               <SingleColor
@@ -28,13 +29,7 @@ function App() {
             );
           })}
         </div>
-        <button
-          onClick={() => {
-            getColor();
-          }}
-        >
-          Generate Random Color
-        </button>
+        <button onClick={getColor}>Generate Random Color</button>
         <TestSite />
       </div>
     </div>

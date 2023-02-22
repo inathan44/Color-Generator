@@ -13,7 +13,7 @@ function getContrastYIQ(hexcolor: string): string {
 
 const SingleColor = (props: SingleColorProps) => {
   return (
-    <div className="bg-blue-500" style={{ backgroundColor: props.color }}>
+    <div className="" style={{ backgroundColor: props.color }}>
       <h1 style={{ color: getContrastYIQ(props.color) }}>Hex: {props.color}</h1>
     </div>
   );
