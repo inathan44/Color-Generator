@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from "./hooks";
 import { selectPalette } from "./store/paletteSlice";
 import { generatePallete } from "./store/paletteSlice";
 import { ColorData, Pallete } from "./store/paletteSlice";
+import Hero from "./Hero";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -15,10 +16,10 @@ function App() {
   }
 
   return (
-    <div className="bg-gray-700 h-screen font-Inter font-medium ">
-      <div className="">
-        <div className="grid grid-cols-5 max-w-7xl mx-auto pt-2">
-          {/* <div className="flex h-64 flex-1 rounded overflow-hidden border-solid border-red-500 border-2"> */}
+    <div className=" h-screen bg-gray-700 font-Inter font-medium">
+      <Hero />
+      <div className="pt-32">
+        <div className="mx-auto grid h-32 max-w-7xl grid-cols-5 overflow-hidden rounded-sm">
           {Object.keys(testing).map((color) => {
             return (
               <SingleColor
@@ -30,7 +31,7 @@ function App() {
         </div>
         <div className="flex justify-center">
           <button
-            className="border-2 border-white px-6 py-3 mt-2 text-white rounded-md"
+            className="mt-2 rounded-md border-2 border-white px-6 py-3 font-semibold text-white transition ease-in-out hover:bg-slate-400 hover:text-black"
             onClick={getColor}
           >
             Generate Random Color
