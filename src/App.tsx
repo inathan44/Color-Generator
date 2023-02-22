@@ -17,7 +17,7 @@ function App() {
   return (
     <div className="App">
       <div className="container">
-        <h1>Testing</h1>
+        <h1 className="bg-red-300">Testing</h1>
         <div className="colors">
           {Object.keys(testing).map((color) => {
             return (
