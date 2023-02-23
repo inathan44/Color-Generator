@@ -13,8 +13,16 @@ function getContrastYIQ(hexcolor: string): string {
 
 const SingleColor = (props: SingleColorProps) => {
   return (
-    <div className="flex h-full" style={{ backgroundColor: props.color }}>
-      <h1 style={{ color: getContrastYIQ(props.color) }}>Hex: {props.color}</h1>
+    <div
+      className="relative flex h-full"
+      style={{ backgroundColor: props.color }}
+    >
+      <h1
+        className="absolute bottom-0 left-1/2 w-full -translate-x-1/2 text-center"
+        style={{ color: getContrastYIQ(props.color) }}
+      >
+        Hex: {props.color}
+      </h1>
     </div>
   );
 };
