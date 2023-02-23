@@ -80,16 +80,22 @@ const paletteSlice = createSlice({
       }
       state.palette = state.previousPalettes[state.paletteIndex];
     },
+    lockColor(state, action): void {
+      state.palette[action.payload as keyof Pallete].locked =
+        !state.palette[action.payload as keyof Pallete].locked;
+    },
   },
 });
 
-export const { generatePallete, undoRedoPalette } = paletteSlice.actions;
+export const { generatePallete, undoRedoPalette, lockColor } =
+  paletteSlice.actions;
 
 export const selectPalette = (state: RootState) => state.palette.palette;
 export const selectPreviousPalettes = (state: RootState) =>
   state.palette.previousPalettes;
-
 export const selectPaletteIndex = (state: RootState) =>
   state.palette.paletteIndex;
+export const selectLocked = (state: RootState, order: keyof Pallete) =>
+  state.palette.palette[order].locked;
 
 export default paletteSlice.reducer;

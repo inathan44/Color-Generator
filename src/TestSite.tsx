@@ -1,6 +1,11 @@
 // import "../public/test.css";
+import { useAppSelector } from "./hooks";
+import SelectPalette from "./SelectPalette";
+import { selectPalette } from "./store/paletteSlice";
 
 const TestSite = () => {
+  const currentPalette = useAppSelector(selectPalette);
+
   return (
     <div>
       <main className="overflow-scroll border-2 border-solid border-red-600 bg-orange-50 ">
@@ -19,6 +24,7 @@ const TestSite = () => {
                 <a
                   href="#"
                   className="inline-block rounded-md bg-orange-400 px-6 py-3 text-white"
+                  style={{ backgroundColor: currentPalette.main.hexColor }}
                 >
                   Start eating well
                 </a>

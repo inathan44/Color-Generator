@@ -9,9 +9,7 @@ import { selectPreviousPalettes } from "./store/paletteSlice";
 const SelectPalette = () => {
   const dispatch = useAppDispatch();
   const prevPallets = useAppSelector(selectPreviousPalettes);
-  console.log(prevPallets);
   const index = useAppSelector(selectPaletteIndex);
-  console.log("index", index);
 
   function getColor(): void {
     dispatch(generatePallete());

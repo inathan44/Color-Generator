@@ -18,16 +18,19 @@ function App() {
       <NavBar />
       <Hero />
       <div className="mx-3 pt-12">
-        <div className="mx-auto grid h-32 max-w-7xl grid-cols-5 overflow-hidden rounded-sm">
-          {Object.keys(testing).map((color) => {
+        <SingleColor />
+        {/* <div className="mx-auto grid h-96 max-w-7xl grid-cols-5 overflow-hidden rounded-sm"> */}
+        {/* {Object.keys(testing).map((paletteOrder) => {
+            console.log(paletteOrder);
             return (
               <SingleColor
-                key={color}
-                color={testing[color as keyof Pallete].hexColor}
+                key={paletteOrder}
+                color={testing[paletteOrder as keyof Pallete].hexColor}
+                order={paletteOrder}
               />
             );
-          })}
-        </div>
+          })} */}
+        {/* </div> */}
         <SelectPalette />
         <TestSite />
       </div>
