@@ -1,17 +1,18 @@
 const Hero = () => {
   return (
     <div>
-      <h1>VividSite</h1>
-      <div>
-        <div>
-          <h1>See how your palette will look in real time.</h1>
-          <h2>
+      <section className="flex">
+        <div className="mx-8 w-1/2 font-light">
+          <h1 className=" mb-3  text-3xl ">
+            See how your palette will look in real time.
+          </h1>
+          <h2 className="text-sm text-gray-500">
             Generate palettes or choose your own. Find tints and shades in one
             spot.
           </h2>
         </div>
         <div></div>
-      </div>
+      </section>
     </div>
   );
 };

@@ -1,14 +1,7 @@
 const NavBar = () => {
   return (
     <>
-      <div className="bg-red-300">NavBar</div>
-      <div className="bg-blue-500">NavBar</div>
-      <div>NavBar</div>
-      <div>NavBar</div>
-      <div>NavBar</div>
-      <div>NavBar</div>
-      <div>NavBar</div>
-      <div>NavBar</div>
+      <div className="mb-24 pt-2 pl-2 text-5xl">VividSite</div>
     </>
   );
 };
