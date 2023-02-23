@@ -2,19 +2,16 @@ import { useState } from "react";
 import TestSite from "./TestSite";
 import SingleColor from "./SingleColor";
 import { useAppDispatch, useAppSelector } from "./hooks";
-import { selectPalette } from "./store/paletteSlice";
+import { selectPalette, selectPreviousPalettes } from "./store/paletteSlice";
 import { generatePallete } from "./store/paletteSlice";
 import { ColorData, Pallete } from "./store/paletteSlice";
 import Hero from "./Hero";
 import NavBar from "./NavBar";
+import SelectPalette from "./SelectPalette";
 
 function App() {
   const dispatch = useAppDispatch();
   const testing = useAppSelector(selectPalette);
-
-  function getColor(): void {
-    dispatch(generatePallete());
-  }
 
   return (
     <div className=" h-screen bg-gray-100 font-Inter font-medium">
@@ -31,14 +28,7 @@ function App() {
             );
           })}
         </div>
-        <div className="flex justify-center">
-          <button
-            className="mt-2 rounded-md border-2 border-black px-6 py-3 font-semibold text-black transition ease-in-out hover:bg-sky-100 hover:text-black"
-            onClick={getColor}
-          >
-            Generate Random Palette
-          </button>
-        </div>
+        <SelectPalette />
         <TestSite />
       </div>
     </div>

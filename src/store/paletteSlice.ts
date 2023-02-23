@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { ToolkitStore } from "@reduxjs/toolkit/dist/configureStore";
+import { Root } from "react-dom/client";
 import { RootState } from "./store";
 
 // When the reducer has a payload/action make sure to add
@@ -43,10 +44,14 @@ const palette: Pallete = {
 
 type InitState = {
   palette: Pallete;
+  previousPalettes: Pallete[];
+  paletteIndex: number;
 };
 
 const initialState: InitState = {
   palette,
+  previousPalettes: [],
+  paletteIndex: 0,
 };
 
 const paletteSlice = createSlice({
@@ -61,12 +66,30 @@ const paletteSlice = createSlice({
           ? state.palette[key as keyof Pallete].hexColor
           : "#" + Math.random().toString(16).slice(2, 8);
       }
+      state.previousPalettes.push(state.palette);
+      state.paletteIndex = state.previousPalettes.length - 1;
+    },
+    undoRedoPalette(state, action): void {
+      if (action.payload === "redo") {
+        state.paletteIndex = Math.min(
+          state.paletteIndex + 1,
+          state.previousPalettes.length - 1
+        );
+      } else if (action.payload === "undo") {
+        state.paletteIndex = Math.max(0, state.paletteIndex - 1);
+      }
+      state.palette = state.previousPalettes[state.paletteIndex];
     },
   },
 });
 
-export const { generatePallete } = paletteSlice.actions;
+export const { generatePallete, undoRedoPalette } = paletteSlice.actions;
 
 export const selectPalette = (state: RootState) => state.palette.palette;
+export const selectPreviousPalettes = (state: RootState) =>
+  state.palette.previousPalettes;
+
+export const selectPaletteIndex = (state: RootState) =>
+  state.palette.paletteIndex;
 
 export default paletteSlice.reducer;
