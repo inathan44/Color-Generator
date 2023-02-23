@@ -33,44 +33,45 @@ const SingleColor = () => {
 
   return (
     <>
-      <div className="mx-auto grid h-96 max-w-7xl grid-cols-5 overflow-hidden rounded-sm">
-        {Object.keys(currentPalette).map((paletteOrder) => {
-          const orderData = currentPalette[paletteOrder as keyof Pallete];
+      {/* <div className="mx-auto grid h-96 max-w-7xl grid-cols-5 overflow-hidden rounded-sm"> */}
 
-          return (
-            <>
-              <div
-                className="relative flex h-full justify-center "
+      {Object.keys(currentPalette).map((paletteOrder) => {
+        const orderData = currentPalette[paletteOrder as keyof Pallete];
+
+        return (
+          <>
+            <div
+              className="relative flex h-full justify-center "
+              style={{
+                backgroundColor: orderData.hexColor,
+              }}
+            >
+              <button
+                onClick={() => {
+                  toggleLock(paletteOrder);
+                  setIsLocked((prev) => !prev);
+                }}
+                className="self-center rounded border-2 border-black px-2 py-1"
                 style={{
-                  backgroundColor: orderData.hexColor,
+                  color: getContrastYIQ(orderData.hexColor),
+                  borderColor: getContrastYIQ(orderData.hexColor),
                 }}
               >
-                <button
-                  onClick={() => {
-                    toggleLock(paletteOrder);
-                    setIsLocked((prev) => !prev);
-                  }}
-                  className="self-center rounded border-2 border-black px-2 py-1"
-                  style={{
-                    color: getContrastYIQ(orderData.hexColor),
-                    borderColor: getContrastYIQ(orderData.hexColor),
-                  }}
-                >
-                  {orderData.locked ? "Locked" : "Lock"}
-                </button>
-                <h1
-                  className="absolute bottom-0 left-1/2 w-full -translate-x-1/2 text-center"
-                  style={{
-                    color: getContrastYIQ(orderData.hexColor),
-                  }}
-                >
-                  Hex: {orderData.hexColor}
-                </h1>
-              </div>
-            </>
-          );
-        })}
-      </div>
+                {orderData.locked ? "Locked" : "Lock"}
+              </button>
+              <h1
+                className="absolute bottom-0 left-1/2 w-full -translate-x-1/2 text-center"
+                style={{
+                  color: getContrastYIQ(orderData.hexColor),
+                }}
+              >
+                Hex: {orderData.hexColor}
+              </h1>
+            </div>
+          </>
+        );
+      })}
+      {/* </div> */}
     </>
   );
 };

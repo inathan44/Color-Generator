@@ -18,19 +18,9 @@ function App() {
       <NavBar />
       <Hero />
       <div className="mx-3 pt-12">
-        <SingleColor />
-        {/* <div className="mx-auto grid h-96 max-w-7xl grid-cols-5 overflow-hidden rounded-sm"> */}
-        {/* {Object.keys(testing).map((paletteOrder) => {
-            console.log(paletteOrder);
-            return (
-              <SingleColor
-                key={paletteOrder}
-                color={testing[paletteOrder as keyof Pallete].hexColor}
-                order={paletteOrder}
-              />
-            );
-          })} */}
-        {/* </div> */}
+        <div className="mx-auto grid h-96 max-w-7xl grid-cols-5 overflow-hidden rounded-sm">
+          <SingleColor />
+        </div>
         <SelectPalette />
         <TestSite />
       </div>

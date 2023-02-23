@@ -1,6 +1,8 @@
+import SingleColor from "./SingleColor";
+
 const Hero = () => {
   return (
-    <div>
+    <div className="mb-8">
       <section className="flex">
         <div className="mx-8 w-1/2 font-light">
           <h1 className=" mb-3  text-3xl ">
