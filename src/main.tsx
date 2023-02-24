@@ -5,11 +5,18 @@ import App from "./App";
 import { Provider } from "react-redux";
 import store from "./store/store";
 import "./index.css";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import ExampleSite from "./ExampleSite";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <Router>
+        <Routes>
+          <Route path="/" element={<App />} />
+          <Route path="/SiteBuilding" element={<ExampleSite />} />
+        </Routes>
+      </Router>
     </Provider>
   </React.StrictMode>
 );
